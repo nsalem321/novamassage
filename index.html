@@ -25,27 +25,38 @@
 <body>
 
     <!-- =========================
-         HEADER
-    ========================== -->
-    <header class="site-header">
-        <div class="logo">NOVA MASSAGE</div>
-    </header>
-
-
-    <!-- =========================
-         HERO
+         HERO / VIDEO BANNER
     ========================== -->
     <section class="hero">
 
-        <div class="hero-image-placeholder">
-            <span>Hero Image</span>
-        </div>
+        <video
+            class="hero-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+        >
+            <source
+                src="videos/nova-banner.mp4"
+                type="video/mp4"
+            >
+
+            Your browser does not support HTML5 video.
+        </video>
 
         <div class="hero-overlay"></div>
 
         <div class="hero-content">
 
-            <a href="tel:+17084009333" class="phone">
+            <div class="logo">
+                NOVA MASSAGE
+            </div>
+
+            <a
+                href="tel:+17084009333"
+                class="phone"
+            >
                 +1 708 400 9333
             </a>
 
@@ -69,11 +80,12 @@
             </a>
 
         </div>
+
     </section>
 
 
     <!-- =========================
-         ABOUT
+         ABOUT NOVA MASSAGE
     ========================== -->
     <section class="about section">
 
@@ -81,8 +93,12 @@
 
         <div class="about-container">
 
-            <div class="about-image image-placeholder">
-                <span>About Image</span>
+            <!-- About image -->
+            <div class="about-image">
+                <img
+                    src="images/about.jpg"
+                    alt="Nova Massage"
+                >
             </div>
 
             <div class="about-text">
@@ -99,13 +115,17 @@
             </div>
 
         </div>
+
     </section>
 
 
     <!-- =========================
          SERVICES
     ========================== -->
-    <section class="services section" id="services">
+    <section
+        class="services section"
+        id="services"
+    >
 
         <h2>WELLNESS COMBO MASSAGES</h2>
 
@@ -117,11 +137,11 @@
             ========================== -->
             <article class="service-card">
 
-                <div class="service-image image-placeholder circle">
-                    <span>
-                        Stone + Scalp<br>
-                        Image
-                    </span>
+                <div class="service-image circle">
+                    <img
+                        src="images/stone-scalp.jpg"
+                        alt="Stone and Scalp Massage"
+                    >
                 </div>
 
                 <h3>
@@ -139,7 +159,6 @@
                     relaxed, refreshed, and restored.
                 </p>
 
-                <!-- DIRECT STONE + SCALP BOOKING -->
                 <a
                     href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services/X6XANGPWMXU4B6HJYA2ZSF6I"
                     class="button"
@@ -157,11 +176,11 @@
             ========================== -->
             <article class="service-card">
 
-                <div class="service-image image-placeholder circle">
-                    <span>
-                        Massage<br>
-                        Image
-                    </span>
+                <div class="service-image circle">
+                    <img
+                        src="images/tension-tamer.jpg"
+                        alt="Tension Tamer and Foot Reflexology"
+                    >
                 </div>
 
                 <h3>
@@ -181,7 +200,6 @@
                     *1/2 hour for foot reflexology.
                 </p>
 
-                <!-- DIRECT TENSION TAMER BOOKING -->
                 <a
                     href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services/2ARGB3IGIQQC35GNO6KVQ2AI"
                     class="button"
@@ -199,11 +217,11 @@
             ========================== -->
             <article class="service-card">
 
-                <div class="service-image image-placeholder circle">
-                    <span>
-                        TMJ + Deep Tissue<br>
-                        Image
-                    </span>
+                <div class="service-image circle">
+                    <img
+                        src="images/tmj-upper-body.jpg"
+                        alt="TMJ and Upper Body Deep Tissue Massage"
+                    >
                 </div>
 
                 <h3>
@@ -222,7 +240,6 @@
                     and restores comfort and mobility.
                 </p>
 
-                <!-- DIRECT TMJ BOOKING -->
                 <a
                     href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services/OP3GGYAQREKWUCWMTUEKQUAE"
                     class="button"
@@ -235,6 +252,7 @@
             </article>
 
         </div>
+
     </section>
 
 
