@@ -3,7 +3,6 @@
    Main Stylesheet
 ======================================== */
 
-
 /* ========================================
    COLORS
 ======================================== */
@@ -17,7 +16,6 @@
     --black: #000000;
     --text: #222222;
 }
-
 
 /* ========================================
    RESET
@@ -50,7 +48,6 @@ a {
     text-decoration: none;
 }
 
-
 /* ========================================
    HEADER
 ======================================== */
@@ -60,21 +57,16 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-
     background: white;
-
     border-top: 3px solid var(--teal);
 }
 
 .logo {
     color: var(--brown);
-
     font-family: "Audiowide", sans-serif;
-
     font-size: 17px;
     letter-spacing: 4px;
 }
-
 
 /* ========================================
    HERO
@@ -82,93 +74,63 @@ a {
 
 .hero {
     position: relative;
-
     height: 470px;
-
     overflow: hidden;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     text-align: center;
 }
 
-
-/* Temporary hero image */
-
-.hero-image-placeholder {
+.hero-video {
     position: absolute;
-    inset: 0;
-
-    background:
-        linear-gradient(
-            135deg,
-            #d8b8ae,
-            #b99589,
-            #d9c5bf
-        );
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: rgba(255,255,255,.45);
-
-    font-size: 18px;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0;
 }
 
-
 /* Dark overlay */
-
 .hero-overlay {
     position: absolute;
     inset: 0;
-
     background: rgba(55, 30, 25, 0.28);
+    z-index: 1;
 }
 
-
 /* Hero content */
-
 .hero-content {
     position: relative;
     z-index: 2;
-
     color: white;
-
     width: 90%;
     max-width: 900px;
 }
 
 .phone {
     display: inline-block;
-
     font-size: 16px;
-
     margin-bottom: 12px;
-
     color: white;
 }
 
 .hero h1 {
     font-family: "Audiowide", sans-serif;
-
     font-size: clamp(28px, 4vw, 48px);
-
     line-height: 1.25;
-
     letter-spacing: 2px;
-
     margin-bottom: 10px;
 }
 
 .hero p {
     font-size: 16px;
-
     margin-bottom: 22px;
 }
-
 
 /* ========================================
    BUTTONS
@@ -176,31 +138,20 @@ a {
 
 .button {
     display: inline-flex;
-
     align-items: center;
     justify-content: center;
-
     background: var(--black);
     color: white;
-
     padding: 15px 30px;
-
     min-width: 165px;
-
     font-size: 14px;
-
     font-weight: 600;
-
     letter-spacing: 1px;
-
-    transition:
-        background .25s ease,
-        transform .25s ease;
+    transition: background .25s ease, transform .25s ease;
 }
 
 .button:hover {
     background: var(--brown);
-
     transform: translateY(-2px);
 }
 
@@ -214,7 +165,6 @@ a {
     color: white;
 }
 
-
 /* ========================================
    GENERAL SECTIONS
 ======================================== */
@@ -225,18 +175,12 @@ a {
 
 .section h2 {
     font-family: "Audiowide", sans-serif;
-
     color: var(--brown);
-
     text-align: center;
-
     font-size: clamp(28px, 4vw, 40px);
-
     letter-spacing: 2px;
-
     margin-bottom: 45px;
 }
-
 
 /* ========================================
    ABOUT
@@ -248,64 +192,35 @@ a {
 
 .about-container {
     max-width: 1200px;
-
     margin: 0 auto;
-
     display: grid;
-
     grid-template-columns: 1fr 1fr;
-
     gap: 70px;
-
     align-items: center;
 }
 
-
-/* Image placeholder */
-
-.image-placeholder {
-    background:
-        linear-gradient(
-            135deg,
-            #ddd,
-            #eee,
-            #cfcfcf
-        );
-
-    min-height: 290px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    color: #888;
-
-    text-align: center;
-
-    font-size: 17px;
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
 }
 
 .about-text {
-    text-align: center;
-
+    text-align: left;
     max-width: 550px;
 }
 
 .about-text h3 {
     font-size: 25px;
-
     font-weight: 500;
-
     margin-bottom: 25px;
 }
 
 .about-text p {
     font-size: 17px;
-
     line-height: 1.75;
 }
-
 
 /* ========================================
    SERVICES
@@ -317,16 +232,11 @@ a {
 
 .services-grid {
     max-width: 1200px;
-
     margin: 0 auto;
-
     display: grid;
-
     grid-template-columns: repeat(3, 1fr);
-
     gap: 45px;
 }
-
 
 /* ========================================
    SERVICE CARDS
@@ -334,71 +244,53 @@ a {
 
 .service-card {
     text-align: center;
-
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
 }
 
-
 /* Circular images */
-
 .service-image {
     width: 280px;
     height: 280px;
-
     max-width: 100%;
-
     margin-bottom: 22px;
 }
 
 .circle {
     border-radius: 50%;
-
     overflow: hidden;
 }
 
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 /* Service title */
-
 .service-card h3 {
     font-size: 19px;
-
     font-weight: 500;
-
     margin-bottom: 15px;
-
     line-height: 1.4;
 }
 
-
 /* Price */
-
 .price {
     font-size: 16px;
-
     margin-bottom: 10px;
-
     font-weight: 500;
 }
 
-
 /* Description */
-
 .service-card p {
     font-size: 16px;
-
     line-height: 1.55;
-
     max-width: 350px;
-
     margin-bottom: 25px;
-
     min-height: 145px;
 }
-
 
 /* ========================================
    FOOTER
@@ -406,52 +298,40 @@ a {
 
 .footer {
     border-top: 3px solid var(--teal);
-
     background: white;
-
     padding: 45px 20px;
-
     text-align: center;
 }
 
 .footer-logo {
     font-family: "Audiowide", sans-serif;
-
     color: var(--brown);
-
     letter-spacing: 3px;
-
     margin-bottom: 15px;
 }
 
 .footer a {
     display: inline-block;
-
     margin-bottom: 10px;
-
     font-size: 17px;
 }
 
 .footer p {
     font-size: 14px;
-
     color: #777;
 }
-
 
 /* ========================================
    MOBILE
 ======================================== */
 
 @media (max-width: 800px) {
-
     .site-header {
         height: 58px;
     }
 
     .logo {
         font-size: 14px;
-
         letter-spacing: 3px;
     }
 
@@ -461,7 +341,6 @@ a {
 
     .hero h1 {
         font-size: 29px;
-
         letter-spacing: 1px;
     }
 
@@ -475,25 +354,17 @@ a {
 
     .section h2 {
         font-size: 27px;
-
         line-height: 1.35;
-
         margin-bottom: 35px;
     }
 
     .about-container {
         grid-template-columns: 1fr;
-
         gap: 35px;
-    }
-
-    .about-image {
-        min-height: 240px;
     }
 
     .services-grid {
         grid-template-columns: 1fr;
-
         gap: 65px;
     }
 
@@ -505,16 +376,13 @@ a {
     .service-card p {
         min-height: auto;
     }
-
 }
-
 
 /* ========================================
    SMALL PHONES
 ======================================== */
 
 @media (max-width: 450px) {
-
     .hero {
         height: 400px;
     }
@@ -539,5 +407,4 @@ a {
         width: 230px;
         height: 230px;
     }
-
 }
