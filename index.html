@@ -1,811 +1,269 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Nova Massage</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Righteous&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --primary: #874949;
-            --primary-dark: #6a3838;
-            --text: #1b1b1b;
-            --muted: #5e5e5e;
-            --light: #f6f6f6;
-            --white: #ffffff;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: "Josefin Sans", Arial, sans-serif;
-            color: var(--text);
-            background: #fff;
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        /* =========================
-           HEADER
-        ========================= */
-
-        header {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 10;
-            background: transparent;
-        }
-
-        .nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 24px 40px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            font-family: "Righteous", serif;
-            font-size: 28px;
-            letter-spacing: 3px;
-            color: white;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-            list-style: none;
-            color: white;
-            font-size: 15px;
-        }
-
-        .nav-links a {
-            transition: opacity .2s ease;
-        }
-
-        .nav-links a:hover {
-            opacity: .7;
-        }
-
-        .nav-button {
-            padding: 12px 24px;
-            border: 1px solid white;
-            transition: .2s ease;
-        }
-
-        .nav-button:hover {
-            background: white;
-            color: var(--primary);
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            min-height: 720px;
-
-            position: relative;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            text-align: center;
-
-            background:
-                linear-gradient(
-                    rgba(22, 22, 22, .45),
-                    rgba(22, 22, 22, .45)
-                ),
-                url("https://media.gettyimages.com/id/2184336232/video/hands-massage-or-relax-with-back-of-woman-in-spa-for-stress-relief-treatment-or-wellness.jpg?b=1&s=640x640&k=20&c=ZHq7LpkOHKrdBsliyeuPTUqRnFAyHQ9jUixpkVOnJnY=")
-                center / cover no-repeat;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            padding: 120px 24px 80px;
-            color: white;
-        }
-
-        .hero-content h1 {
-            font-family: "Righteous", serif;
-            font-size: clamp(48px, 7vw, 88px);
-            font-weight: 400;
-            letter-spacing: 4px;
-            line-height: 1.05;
-            margin-bottom: 24px;
-        }
-
-        .hero-content p {
-            max-width: 620px;
-            margin: 0 auto 36px;
-            font-size: 20px;
-            line-height: 1.7;
-        }
-
-        .button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-
-            min-height: 56px;
-            padding: 8px 32px;
-
-            background: black;
-            color: white;
-
-            font-family: "Righteous", serif;
-            font-size: 14px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-
-            transition: .2s ease;
-        }
-
-        .button:hover {
-            background: #1f1f1f;
-            transform: translateY(-2px);
-        }
-
-        .button.light {
-            background: white;
-            color: black;
-        }
-
-        .button.light:hover {
-            background: #eeeeee;
-        }
-
-        /* =========================
-           INTRO
-        ========================= */
-
-        .intro {
-            padding: 90px 24px;
-            text-align: center;
-        }
-
-        .section-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .eyebrow {
-            color: var(--primary);
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 14px;
-        }
-
-        .section-title {
-            font-family: "Righteous", serif;
-            font-weight: 400;
-            font-size: clamp(34px, 5vw, 54px);
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .intro-text {
-            max-width: 720px;
-            margin: 0 auto;
-            color: var(--muted);
-            font-size: 18px;
-        }
-
-        /* =========================
-           SERVICES
-        ========================= */
-
-        .services {
-            background: var(--light);
-            padding: 90px 24px;
-        }
-
-        .services-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 55px;
-        }
-
-        .services-grid {
-            max-width: 1150px;
-            margin: 0 auto;
-
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .service-card {
-            background: white;
-            padding: 36px 30px;
-
-            display: flex;
-            flex-direction: column;
-
-            min-height: 360px;
-
-            transition:
-                transform .25s ease,
-                box-shadow .25s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 15px 40px rgba(0,0,0,.08);
-        }
-
-        .service-card h3 {
-            font-family: "Righteous", serif;
-            font-weight: 400;
-            font-size: 26px;
-            line-height: 1.25;
-            margin-bottom: 18px;
-        }
-
-        .service-card p {
-            color: var(--muted);
-            font-size: 16px;
-            line-height: 1.7;
-            margin-bottom: 28px;
-        }
-
-        .service-card .button {
-            margin-top: auto;
-            align-self: flex-start;
-        }
-
-        /* =========================
-           FEATURE
-        ========================= */
-
-        .feature {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: 550px;
-        }
-
-        .feature-image {
-            background:
-                url("https://media.gettyimages.com/id/2184336232/video/hands-massage-or-relax-with-back-of-woman-in-spa-for-stress-relief-treatment-or-wellness.jpg?b=1&s=640x640&k=20&c=ZHq7LpkOHKrdBsliyeuPTUqRnFAyHQ9jUixpkVOnJnY=")
-                center / cover no-repeat;
-        }
-
-        .feature-content {
-            padding: 80px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .feature-content h2 {
-            font-family: "Righteous", serif;
-            font-weight: 400;
-            font-size: clamp(36px, 4vw, 55px);
-            line-height: 1.2;
-            margin-bottom: 25px;
-        }
-
-        .feature-content p {
-            color: var(--muted);
-            font-size: 18px;
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-
-        /* =========================
-           BOOKING CTA
-        ========================= */
-
-        .booking {
-            padding: 100px 24px;
-            background: var(--primary);
-            color: white;
-            text-align: center;
-        }
-
-        .booking h2 {
-            font-family: "Righteous", serif;
-            font-size: clamp(38px, 5vw, 60px);
-            font-weight: 400;
-            margin-bottom: 20px;
-        }
-
-        .booking p {
-            max-width: 650px;
-            margin: 0 auto 35px;
-            font-size: 18px;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            background: white;
-            padding: 50px 24px 30px;
-        }
-
-        .footer-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding-bottom: 30px;
-            border-bottom: 1px solid #e5e5e5;
-        }
-
-        .footer-logo {
-            font-family: "Righteous", serif;
-            color: var(--primary);
-            font-size: 25px;
-            letter-spacing: 3px;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 25px;
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        .copyright {
-            max-width: 1100px;
-            margin: 25px auto 0;
-            text-align: center;
-            color: #5e5e5e;
-            font-size: 14px;
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 900px) {
-
-            .nav {
-                padding: 20px 24px;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                min-height: 650px;
-            }
-
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .feature {
-                grid-template-columns: 1fr;
-            }
-
-            .feature-image {
-                min-height: 400px;
-            }
-
-            .feature-content {
-                padding: 60px 30px;
-            }
-        }
-
-        @media (max-width: 600px) {
-
-            .hero-content h1 {
-                font-size: 50px;
-            }
-
-            .hero-content p {
-                font-size: 17px;
-            }
-
-            .intro,
-            .services,
-            .booking {
-                padding: 70px 20px;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .service-card {
-                min-height: auto;
-            }
-
-            .footer-inner {
-                flex-direction: column;
-                gap: 25px;
-                text-align: center;
-            }
-
-            .footer-links {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Nova Massage">
+  <meta name="description" content="Relax and rejuvenate with our skilled massage services.">
+  <meta name="theme-color" content="#874949">
+  <title>Nova Massage</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-
-    <!-- HEADER -->
-    <header>
-        <nav class="nav">
-
-            <a href="#" class="logo">
-                NOVA
-            </a>
-
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-
-                <li>
-                    <a
-                        href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX"
-                        target="_blank"
-                        class="nav-button"
-                    >
-                        Book Now
-                    </a>
-                </li>
-            </ul>
-
-        </nav>
-    </header>
-
-
-    <!-- HERO -->
-    <main id="home">
-
-        <section class="hero">
-
-            <div class="hero-content">
-
-                <h1>
-                    NOVA MASSAGE
-                </h1>
-
-                <p>
-                    Relax and rejuvenate with our skilled massage services.
-                </p>
-
-                <a
-                    href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX"
-                    target="_blank"
-                    class="button light"
-                >
-                    Book Your Session
-                </a>
-
-            </div>
-
-        </section>
-
-
-        <!-- INTRO -->
-        <section class="intro">
-
-            <div class="section-inner">
-
-                <div class="eyebrow">
-                    Wellness & Relaxation
-                </div>
-
-                <h2 class="section-title">
-                    Expert Massage Therapy
-                </h2>
-
-                <p class="intro-text">
-                    Experience professional massage treatments designed
-                    to help you relax, restore your body, and leave
-                    feeling refreshed and renewed.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- SERVICES -->
-        <section class="services" id="services">
-
-            <div class="services-header">
-
-                <div class="eyebrow">
-                    Our Services
-                </div>
-
-                <h2 class="section-title">
-                    Treatments For Your Wellness
-                </h2>
-
-                <p class="intro-text">
-                    Choose from a range of relaxing and restorative
-                    treatments designed around your body's needs.
-                </p>
-
-            </div>
-
-
-            <div class="services-grid">
-
-                <!-- SERVICE 1 -->
-                <article class="service-card">
-
-                    <h3>
-                        Full Body Relaxation
-                    </h3>
-
-                    <p>
-                        Indulge in 2.5 hours of complete relaxation
-                        featuring a Swedish massage, soothing scalp
-                        massage, refreshing foot scrub, hot steam,
-                        and a revitalizing facial massage.
-                    </p>
-
-                    <a
-                        href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services/4BCBHGX3U5JWNAGL5E77T4NR"
-                        target="_blank"
-                        class="button"
-                    >
-                        Book Now
-                    </a>
-
-                </article>
-
-
-                <!-- SERVICE 2 -->
-                <article class="service-card">
-
-                    <h3>
-                        Foot Reflexology
-                    </h3>
-
-                    <p>
-                        Enjoy a 90-minute treatment with a
-                        60-minute full-body massage and 30 minutes
-                        of foot reflexology, including a salt foot
-                        scrub and warm towels.
-                    </p>
-
-                    <a
-                        href="#"
-                        class="button"
-                    >
-                        Book Now
-                    </a>
-
-                </article>
-
-
-                <!-- SERVICE 3 -->
-                <article class="service-card">
-
-                    <h3>
-                        Back Facial
-                    </h3>
-
-                    <p>
-                        Enjoy a 1-hour back facial featuring gentle
-                        Swedish flowing strokes followed by steaming,
-                        exfoliation, a soothing scrub, and warm
-                        hot towels.
-                    </p>
-
-                    <a
-                        href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services/N57YDMCUG5IBNMLTUDYMAFRK"
-                        target="_blank"
-                        class="button"
-                    >
-                        Book Now
-                    </a>
-
-                </article>
-
-
-                <!-- SERVICE 4 -->
-                <article class="service-card">
-
-                    <h3>
-                        Abdominal Massage
-                    </h3>
-
-                    <p>
-                        A therapeutic abdominal massage designed to
-                        stimulate digestive organs and internal muscles,
-                        relieve discomfort, enhance circulation, and
-                        support relaxation.
-                    </p>
-
-                    <a
-                        href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services/SG4LEG5JIPSKF53NH7UBZS42"
-                        target="_blank"
-                        class="button"
-                    >
-                        Book Now
-                    </a>
-
-                </article>
-
-
-                <!-- SERVICE 5 -->
-                <article class="service-card">
-
-                    <h3>
-                        Detox Massage
-                    </h3>
-
-                    <p>
-                        A soothing detox massage supporting your
-                        body's natural cleansing and rejuvenation
-                        processes with targeted abdominal and
-                        facial techniques.
-                    </p>
-
-                    <a
-                        href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services/SFHO6VLIWIB66UF76BNN3FKU"
-                        target="_blank"
-                        class="button"
-                    >
-                        Book Now
-                    </a>
-
-                </article>
-
-
-                <!-- SERVICE 6 -->
-                <article class="service-card">
-
-                    <h3>
-                        Hot Stone Therapy
-                    </h3>
-
-                    <p>
-                        Heated stones deliver targeted pressure
-                        and soothing warmth while Swedish massage
-                        techniques help reduce muscle tension and
-                        promote deep relaxation.
-                    </p>
-
-                    <a
-                        href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services/KXHYPTTUWKYQVMSA5HVF5A3V"
-                        target="_blank"
-                        class="button"
-                    >
-                        Book Now
-                    </a>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- ABOUT / FEATURE -->
-        <section class="feature" id="about">
-
-            <div class="feature-image"></div>
-
-            <div class="feature-content">
-
-                <div class="eyebrow">
-                    About Nova
-                </div>
-
-                <h2>
-                    Relax. Restore. Rejuvenate.
-                </h2>
-
-                <p>
-                    Our treatments combine relaxing massage techniques
-                    with targeted therapies designed to release tension,
-                    improve circulation, and help you feel your best.
-                </p>
-
-                <div>
-                    <a
-                        href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX"
-                        target="_blank"
-                        class="button"
-                    >
-                        Book Your Treatment
-                    </a>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- BOOKING CTA -->
-        <section class="booking" id="contact">
-
-            <h2>
-                Ready To Relax?
-            </h2>
-
-            <p>
-                Give yourself the time to unwind, recharge, and
-                experience complete relaxation.
-            </p>
-
-            <a
-                href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX"
-                target="_blank"
-                class="button light"
-            >
-                Book An Appointment
-            </a>
-
-        </section>
-
-    </main>
-
-
-    <!-- FOOTER -->
-    <footer>
-
-        <div class="footer-inner">
-
-            <div class="footer-logo">
-                NOVA MASSAGE
-            </div>
-
-            <div class="footer-links">
-                <a href="#home">Home</a>
-                <a href="#services">Services</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
-            </div>
-
+  <header class="site-header" id="site-header">
+    <div class="header-media">
+      <!-- Place your downloaded video at assets/nova-massage.mp4 -->
+      <video
+        class="header-video"
+        id="heroVideo"
+        autoplay
+        muted
+        loop
+        playsinline
+        poster="https://media.gettyimages.com/id/2184336232/video/hands-massage-or-relax-with-back-of-woman-in-spa-for-stress-relief-treatment-or-wellness.jpg?b=1&s=640x640&k=20&c=ZHq7LpkOHKrdBsliyeuPTUqRnFAyHQ9jUixpkVOnJnY="
+        preload="metadata"
+        aria-hidden="true"
+      >
+        <source src="assets/nova-massage.mp4" type="video/mp4">
+      </video>
+      <div class="header-overlay"></div>
+
+      <nav class="main-nav" aria-label="Primary navigation">
+        <div class="nav-left">
+          <button class="mobile-menu-button" id="mobileMenuButton" type="button" aria-label="Open navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
         </div>
 
-        <p class="copyright">
-            Copyright © 2026 Nova Massage - All Rights Reserved.
-        </p>
+        <a class="brand" href="#top">Nova Massage</a>
 
-    </footer>
+        <div class="nav-right">
+          <a class="phone-link" href="tel:+17084009333">+17084009333</a>
+          <button class="more-button" id="moreButton" type="button" aria-expanded="false">More <span aria-hidden="true">⌄</span></button>
+        </div>
+      </nav>
 
+      <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+        <a href="#about">About</a>
+        <a href="#wellness">Wellness Combo Massages</a>
+        <a href="#popular">Popular Massages</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact Us</a>
+        <a class="mobile-book" href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services" target="_blank" rel="noopener noreferrer">Book Your Session Now</a>
+      </div>
+
+      <div class="more-menu" id="moreMenu" aria-hidden="true">
+        <a href="#about">About</a>
+        <a href="#wellness">Wellness Combo Massages</a>
+        <a href="#popular">Popular Massages</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact Us</a>
+      </div>
+
+      <div class="hero-copy" id="top">
+        <h1>Expert Massage Therapy for Your Wellness</h1>
+        <p>Relax and rejuvenate with our skilled massage services.</p>
+        <a class="primary-button" href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services" target="_blank" rel="noopener noreferrer">Book Your Session Now</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section about-section" id="about">
+      <div class="container">
+        <h2>About Nova Massage</h2>
+
+        <div class="about-grid">
+          <div class="about-image-wrap">
+            <img
+              src="https://img1.wsimg.com/isteam/getty/1648685474/:/cr=t:0%25,l:0%25,w:100%25,h:94.81%25/rs=w:600,h:300,cg:true"
+              alt="Massage therapy"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="about-copy">
+            <h4>Experienced Therapist</h4>
+            <p>At Nova Massage, we pride ourselves on providing exceptional massage therapy services. With over a decade of experience, our licensed therapist is skilled in various modalities tailored to meet individual needs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cards-section warm-section" id="wellness">
+      <div class="container">
+        <h2>Wellness Combo Massages</h2>
+
+        <div class="cards-grid three-cols">
+          <article class="service-card image-card">
+            <img src="https://img1.wsimg.com/isteam/getty/154926838/:/cr=t:0%25,l:16.66%25,w:66.68%25,h:100%25/rs=w:365,h:365,cg:true" alt="Stone and scalp massage" loading="lazy">
+            <div class="service-content">
+              <h4>Stone + Scalp Massage</h4>
+              <div class="service-meta">1 hr 15 min | $ 150</div>
+              <p>Heated stones ease muscle tension and boost circulation while a calming scalp massage relieves stress and clears the mind, leaving you relaxed, refreshed, and restored.</p>
+              <a class="secondary-button" href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services/X6XANGPWMXU4B6HJYA2ZSF6I" target="_blank" rel="noopener noreferrer">Book Now</a>
+            </div>
+          </article>
+
+          <article class="service-card image-card">
+            <img src="https://img1.wsimg.com/isteam/getty/1357320952/:/cr=t:0%25,l:16.65%25,w:66.7%25,h:100%25/rs=w:365,h:365,cg:true" alt="Upper body and foot reflexology massage" loading="lazy">
+            <div class="service-content">
+              <h4>Tension Tamer + Foot Reflexology</h4>
+              <div class="service-meta">1 hr 30 mins | $ 160</div>
+              <p>Release upper-body tension with focused neck, shoulder, and upper back work, followed by revitalizing foot reflexology to restore balance and circulation.</p>
+              <p class="fine-print">*1/2 hour for foot reflexology.</p>
+              <a class="secondary-button" href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services/HVYJ25LS3ZKUAB7TLIMZ2WYJ" target="_blank" rel="noopener noreferrer">BOOK NOW</a>
+            </div>
+          </article>
+
+          <article class="service-card image-card">
+            <img src="https://img1.wsimg.com/isteam/getty/1354172991/:/cr=t:0%25,l:16.67%25,w:66.67%25,h:100%25/rs=w:365,h:365,cg:true" alt="TMJ and upper body deep tissue massage" loading="lazy">
+            <div class="service-content">
+              <h4>TMJ + Upper Body Deep Tissue</h4>
+              <div class="service-meta">1 hr 30 mins | $180</div>
+              <p>Targeted TMJ techniques relieve jaw, face, and neck tension, while deep tissue work focuses on the shoulders and upper back. This treatment eases chronic tightness, reduces headaches, and restores comfort and mobility.</p>
+              <a class="secondary-button" href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services/OP3GGYAQREKWUCWMTUEKQUAE" target="_blank" rel="noopener noreferrer">BOOK NOW</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cards-section" id="popular">
+      <div class="container">
+        <h2>Popular Massages</h2>
+
+        <div class="cards-grid three-cols popular-grid">
+          <article class="service-card image-card">
+            <img src="https://img1.wsimg.com/isteam/getty/1357320717/:/cr=t:0%25,l:33.3%25,w:66.7%25,h:100%25/rs=w:600,h:600,cg:true" alt="Two hour massage" loading="lazy">
+            <div class="service-content"><h4>2 Hour Bliss</h4><div class="service-meta">2 hrs | $255</div><p>Enjoy a deeply restorative 2-hour massage experience that combines therapeutic deep tissue techniques with calming relaxation methods. Guided by a skilled therapist, this treatment helps release muscle tension, ease tight knots, and promote full-body relaxation, leaving you feeling refreshed, balanced, and renewed.</p><a class="secondary-button" href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services/PUYNGH63DZPZTDPHVV3SJGME" target="_blank" rel="noopener noreferrer">Book Now</a></div>
+          </article>
+
+          <article class="service-card image-card">
+            <img src="https://img1.wsimg.com/isteam/getty/1131585268/:/cr=t:0%25,l:7.95%25,w:84.1%25,h:100%25/rs=w:600,h:600,cg:true" alt="Full body and foot reflexology" loading="lazy">
+            <div class="service-content"><h4>Ground &amp; Glow</h4><div class="service-meta">1 hr 30 mins | $160.00 only</div><p>Enjoy a 90-minute treatment with a 60-minute full-body massage and 30 minutes of foot reflexology, including a salt foot scrub and warm towels. Soothe your body, rebalance energy, and leave feeling refreshed and fully restored. Book your session today!</p><a class="secondary-button" href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services/CAGPP7F3HHGY2B7J4KEX4V2Z" target="_blank" rel="noopener noreferrer">Book Now</a></div>
+          </article>
+
+          <article class="service-card image-card">
+            <img src="https://img1.wsimg.com/isteam/getty/527552372/:/cr=t:0%25,l:12.51%25,w:74.99%25,h:100%25/rs=w:600,h:600,cg:true" alt="Spa massage treatment" loading="lazy">
+            <div class="service-content"><h4>Spa Bliss Alert!</h4><div class="service-meta">2 hrs 30 mins | $300.00</div><p>Indulge in 2.5 hours of complete relaxation featuring a Swedish massage, soothing scalp massage, refreshing foot scrub, hot steam, and a revitalizing facial massage. This full-body experience leaves your skin glowing, your muscles relaxed, and your mind fully renewed. Book your session today and treat yourself to total restoration.</p><a class="secondary-button" href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services/4BCBHGX3U5JWNAGL5E77T4NR" target="_blank" rel="noopener noreferrer">Book Now</a></div>
+          </article>
+
+          <article class="service-card image-card">
+            <img src="https://img1.wsimg.com/isteam/getty/2201939327/:/cr=t:0%25,l:16.68%25,w:66.64%25,h:100%25/rs=w:600,h:600,cg:true" alt="Back facial treatment" loading="lazy">
+            <div class="service-content"><h4>Steamy Back Bliss!</h4><div class="service-meta">1 hr | $130.00 only</div><p>Enjoy a 1-hour back facial featuring gentle Swedish flowing strokes to relax the muscles, followed by steaming, exfoliation, a soothing scrub, and warm hot towels. This deeply cleansing and calming treatment smooths the skin, releases tension, and leaves you feeling refreshed, rejuvenated, and completely pampered. Book your session today!</p><a class="secondary-button" href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services/N57YDMCUG5IBNMLTUDYMAFRK" target="_blank" rel="noopener noreferrer">Book Now</a></div>
+          </article>
+
+          <article class="service-card image-card">
+            <img src="https://img1.wsimg.com/isteam/getty/941310350/:/cr=t:0%25,l:16.64%25,w:66.73%25,h:100%25/rs=w:600,h:600,cg:true" alt="Abdominal massage" loading="lazy">
+            <div class="service-content"><h4>Abdominal Massage</h4><div class="service-meta">1 hr 15 mins | $175.00</div><p>Experience a therapeutic abdominal massage that gently stimulates digestive organs and internal muscles to relieve discomfort, enhance circulation, and support natural detoxification. This nurturing treatment helps reduce bloating, improve digestion, and promote deep relaxation, supporting overall abdominal health and well-being.</p><a class="secondary-button" href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services/SG4LEG5JIPSKF53NH7UBZS42" target="_blank" rel="noopener noreferrer">Book Now</a></div>
+          </article>
+
+          <article class="service-card image-card">
+            <img src="https://img1.wsimg.com/isteam/ip/4fd587ee-f681-4005-bf96-f7e2dbe89e36/1000040383.jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:600,h:600,cg:true" alt="Dry brushing and lymph flow" loading="lazy">
+            <div class="service-content"><h4>Brush &amp; Lymph Flow</h4><div class="service-meta">1 hr 30 mins | $175.00</div><p>Revitalize your body with a detoxifying massage experience that combines gentle lymphatic drainage and invigorating dry brushing. This treatment helps guide fluid movement, stimulate circulation, and leave the body feeling refreshed and renewed.</p><a class="secondary-button" href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services/VPOLLJVI3RP5ZQHGAVYYNILW" target="_blank" rel="noopener noreferrer">Book Now</a></div>
+          </article>
+
+          <article class="service-card image-card">
+            <img src="https://img1.wsimg.com/isteam/ip/4fd587ee-f681-4005-bf96-f7e2dbe89e36/1000037197.jpg/:/cr=t:0%25,l:25.35%25,w:49.31%25,h:100%25/rs=w:600,h:600,cg:true" alt="Foot reflexology" loading="lazy">
+            <div class="service-content"><h4>Foot Reflexology</h4><div class="service-meta">1 hr | $100.00 only</div><p>Foot Harmony Reflexology uses precise pressure techniques to stimulate reflex points, promoting balance and harmony throughout the body. This therapeutic session is designed to relax the feet while supporting whole-body wellbeing.</p><a class="secondary-button" href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services/GTLSBPQGGQMZWG26UVLRRE4A" target="_blank" rel="noopener noreferrer">Book Now</a></div>
+          </article>
+
+          <article class="service-card image-card">
+            <img src="https://img1.wsimg.com/isteam/ip/4fd587ee-f681-4005-bf96-f7e2dbe89e36/1000041154.jpg/:/cr=t:0%25,l:17.35%25,w:65.31%25,h:100%25/rs=w:600,h:600,cg:true" alt="TMJ and upper body massage" loading="lazy">
+            <div class="service-content"><h4>TMJ Relief and upper body</h4><div class="service-meta">1 hr | $125.00 only</div><p>TMJ Therapy: Expert intra-oral and extra-oral massage techniques to ease jaw pain, clicking, and tension. The head, neck, and facial regions are addressed for a focused treatment that also supports upper-body relaxation.</p><a class="secondary-button" href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services/GJZTELLD76VKFG6G2RRQBOKR" target="_blank" rel="noopener noreferrer">Book Now</a></div>
+          </article>
+
+          <article class="service-card image-card">
+            <img src="https://img1.wsimg.com/isteam/getty/117685590/:/cr=t:0%25,l:16.66%25,w:66.68%25,h:100%25/rs=w:600,h:600,cg:true" alt="Lymphatic massage" loading="lazy">
+            <div class="service-content"><h4>Lymphatic Lovin</h4><div class="service-meta">1 hr 15 mins | $150.00</div><p>Experience a soothing detox massage that supports your body’s natural cleansing and rejuvenation processes. This treatment helps reduce swelling, enhance immunity, and promote deep relaxation. It includes targeted abdominal and facial techniques for a complete and revitalizing experience.</p><a class="secondary-button" href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services/SFHO6VLIWIB66UF76BNN3FKU" target="_blank" rel="noopener noreferrer">Book Now</a></div>
+          </article>
+
+          <article class="service-card image-card">
+            <img src="https://img1.wsimg.com/isteam/getty/1066506450/:/cr=t:0%25,l:16.67%25,w:66.67%25,h:100%25/rs=w:600,h:600,cg:true" alt="Upper body massage" loading="lazy">
+            <div class="service-content"><h4>Upper Body Tension Relief</h4><div class="service-meta">1 hr 30 mins | $170.00</div><p>This focused upper body massage targets the neck, shoulders, upper back, arms, and hands to release tight muscles and built-up stress. Using a blend of firm pressure, smooth flowing strokes, and targeted techniques, it helps improve circulation, ease stiffness, and restore mobility. Ideal for desk work, stress, and muscle fatigue, this treatment leaves your upper body feeling lighter, relaxed, and refreshed.</p><p class="fine-print">*Hot Stones Complementary</p><a class="secondary-button" href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services/IWUVUCNKKVI7AJO3ADPTZWSZ" target="_blank" rel="noopener noreferrer">Book Now</a></div>
+          </article>
+
+          <article class="service-card image-card">
+            <img src="https://img1.wsimg.com/isteam/getty/531971274/:/cr=t:0%25,l:12.5%25,w:75%25,h:100%25/rs=w:600,h:600,cg:true" alt="Hot stone therapy" loading="lazy">
+            <div class="service-content"><h4>Hot Stone Serenity</h4><div class="service-meta">1 hr | $125.00</div><p>Experience Hot Stone Therapy, where heated stones are used to deliver targeted pressure and soothing warmth. This treatment enhances circulation, reduces muscle tension, and promotes deep relaxation. Combined with Swedish massage techniques, it calms both mind and body, melting away stress and discomfort for a fully rejuvenating experience.</p><a class="secondary-button" href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services/KXHYPTTUWKYQVMSA5HVF5A3V" target="_blank" rel="noopener noreferrer">Book Now</a></div>
+          </article>
+
+          <article class="service-card image-card">
+            <img src="https://img1.wsimg.com/isteam/ip/4fd587ee-f681-4005-bf96-f7e2dbe89e36/1000041157.jpg/:/rs=w:600,h:600,cg:true,m/cr=w:600,h:600" alt="Neck massage" loading="lazy">
+            <div class="service-content"><h4>Neck Nirvana</h4><div class="service-meta">1 hr | $100.00</div><p>Experience a targeted clinical massage designed to relieve neck and scapular tension. This treatment uses precise pressure techniques combined with therapeutic stretching to release muscle knots, improve mobility, and reduce pain. Leave with relaxed, supple muscles and a renewed sense of comfort and ease.</p><a class="secondary-button" href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services/ZTL2WG6OLZMDP4N5TY64VVFQ" target="_blank" rel="noopener noreferrer">Book Now</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reviews-section" id="reviews">
+      <div class="reviews-banner">
+        <div class="container">
+          <h2>What Our Clients Say</h2>
+          <!-- The supplied GoDaddy HTML contains the reviews widget shell, but the individual reviews are loaded dynamically and are not present in the supplied source. -->
+          <div class="reviews-empty" aria-label="Reviews">
+            <div class="reviews-placeholder"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-info">
+          <h2>Contact Us</h2>
+          <h4>My appointment only. Cash/zelle</h4>
+          <p>My appointment only. Please text prior to scheduling online, just to confirm, thank you!</p>
+
+          <h4>Nova Massage</h4>
+          <p>9029 West Lincoln Highway, Frankfort, IL, USA</p>
+          <p><a href="tel:+17084009333">+17084009333</a></p>
+
+          <div class="hours">
+            <h4>Hours</h4>
+            <div class="hours-row"><span>Today</span><a href="#contact">By Appointment</a><span class="chevron">⌄</span></div>
+            <p>Please text prior to booking thank you!</p>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap">
+          <h3>Drop us a line!</h3>
+          <form id="contactForm" class="contact-form">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name">
+
+            <label for="email">Email<span aria-hidden="true">*</span></label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel">
+
+            <label for="attachment">Attach Files</label>
+            <input id="attachment" name="attachment" type="file">
+            <div class="attachment-note">Attachments (0)</div>
+
+            <p class="recaptcha-text">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.</p>
+
+            <div class="form-actions">
+              <button type="submit" class="secondary-button">Send</button>
+              <button type="reset" class="cancel-button">Cancel</button>
+            </div>
+            <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">Nova Massage</div>
+      <p>Copyright © 2026 Nova Massage - All Rights Reserved.</p>
+      <p class="powered">Powered by <a href="https://www.godaddy.com/websites/website-builder" target="_blank" rel="noopener noreferrer">GoDaddy Website Builder</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
