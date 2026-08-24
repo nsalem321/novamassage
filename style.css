@@ -1,9 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Righteous&display=swap');
 
-:root{--primary:#874949;--text:#171717;--muted:#5e5e5e;--soft:#f6f6f6;--white:#fff}
+:root{
+  --primary:#874949;
+  --text:#171717;
+  --muted:#5e5e5e;
+  --soft:#f6f6f6;
+  --white:#fff
+}
 
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
+*{
+  box-sizing:border-box
+}
+
+html{
+  scroll-behavior:smooth
+}
+
 body{
   margin:0;
   color:var(--text);
@@ -13,15 +25,40 @@ body{
   line-height:1.5;
   -webkit-font-smoothing:antialiased
 }
-body.menu-open{overflow:hidden}
-a{color:inherit;text-decoration:none}
-img,video{display:block;max-width:100%}
-button,input{font:inherit}
-button{cursor:pointer}
 
-.container{width:min(1200px,calc(100% - 48px));margin:0 auto}
+body.menu-open{
+  overflow:hidden
+}
 
-.section{padding:56px 0}
+a{
+  color:inherit;
+  text-decoration:none
+}
+
+img,
+video{
+  display:block;
+  max-width:100%
+}
+
+button,
+input{
+  font:inherit
+}
+
+button{
+  cursor:pointer
+}
+
+.container{
+  width:min(1200px,calc(100% - 48px));
+  margin:0 auto
+}
+
+.section{
+  padding:56px 0
+}
+
 .section h2{
   margin:0 0 40px;
   text-align:center;
@@ -33,6 +70,7 @@ button{cursor:pointer}
   line-height:1.15;
   text-transform:uppercase
 }
+
 
 /* =========================
    HEADER
@@ -69,7 +107,12 @@ button{cursor:pointer}
   background:rgba(22,22,22,.30)
 }
 
-/* CENTERED TOP NAVIGATION */
+
+/* =========================
+   TOP NAVIGATION
+   CENTERED / NO HAMBURGER
+========================= */
+
 .main-nav{
   position:absolute;
   inset:0 0 auto;
@@ -84,30 +127,35 @@ button{cursor:pointer}
 }
 
 .nav-left{
+  width:100%;
   display:flex;
   align-items:center;
-  justify-content:center;
-  width:100%
+  justify-content:center
 }
 
 .brand{
+  display:block;
   flex:0 0 auto;
+  margin:0;
   color:var(--primary);
   font-family:'Righteous',serif;
   font-size:24px;
   font-weight:400;
   letter-spacing:2px;
-  line-height:1
+  line-height:1;
+  text-align:center
 }
 
-/* REMOVE HAMBURGER */
+
+/* Hamburger completely removed */
 .mobile-menu-button{
-  display:none !important
+  display:none !important;
 }
 
 .mobile-menu-button span{
-  display:none
+  display:none !important;
 }
+
 
 /* =========================
    HERO
@@ -177,7 +225,10 @@ button{cursor:pointer}
   transition:background .2s ease,transform .2s ease
 }
 
-.primary-button{background:#fff;color:#000}
+.primary-button{
+  background:#fff;
+  color:#000
+}
 
 .primary-button:hover,
 .secondary-button:hover{
@@ -186,8 +237,9 @@ button{cursor:pointer}
   color:#fff
 }
 
+
 /* =========================
-   MOBILE NAV / DRAWER
+   MOBILE NAV
 ========================= */
 
 .mobile-nav{
@@ -205,15 +257,26 @@ button{cursor:pointer}
   gap:4px
 }
 
-.mobile-nav.open{transform:translateX(0)}
-.mobile-nav a{padding:14px 8px;color:#1b1b1b}
-.mobile-nav a:hover{color:var(--primary)}
+.mobile-nav.open{
+  transform:translateX(0)
+}
+
+.mobile-nav a{
+  padding:14px 8px;
+  color:#1b1b1b
+}
+
+.mobile-nav a:hover{
+  color:var(--primary)
+}
+
 .mobile-nav .mobile-book{
   margin-top:16px;
   background:var(--primary);
   color:#fff;
   text-align:center
 }
+
 
 /* =========================
    ABOUT
@@ -257,11 +320,14 @@ button{cursor:pointer}
   line-height:1.7
 }
 
+
 /* =========================
    SERVICES
 ========================= */
 
-.warm-section{background:var(--soft)}
+.warm-section{
+  background:var(--soft)
+}
 
 .cards-grid{
   display:grid;
@@ -329,6 +395,7 @@ button{cursor:pointer}
   margin-top:auto
 }
 
+
 /* =========================
    REVIEWS
 ========================= */
@@ -361,21 +428,31 @@ button{cursor:pointer}
   min-height:180px
 }
 
+
 /* =========================
    CONTACT
 ========================= */
 
-.contact-grid{display:block}
+.contact-grid{
+  display:block
+}
 
 .contact-info h2{
   text-align:left;
   margin-bottom:40px
 }
 
-.contact-info h4{margin-top:30px}
-.contact-info a{color:var(--primary)}
+.contact-info h4{
+  margin-top:30px
+}
 
-.hours{margin-top:34px}
+.contact-info a{
+  color:var(--primary)
+}
+
+.hours{
+  margin-top:34px
+}
 
 .hours-row{
   display:inline-flex;
@@ -384,9 +461,17 @@ button{cursor:pointer}
   color:var(--muted)
 }
 
-.hours-row a{color:var(--primary)}
-.chevron{color:var(--primary)}
-.hours p{margin-top:16px}
+.hours-row a{
+  color:var(--primary)
+}
+
+.chevron{
+  color:var(--primary)
+}
+
+.hours p{
+  margin-top:16px
+}
 
 .contact-form{
   display:flex;
@@ -426,7 +511,9 @@ button{cursor:pointer}
   font-size:12px
 }
 
-.attachment-note{margin-top:3px}
+.attachment-note{
+  margin-top:3px
+}
 
 .recaptcha-text{
   margin-top:26px;
@@ -456,7 +543,10 @@ button{cursor:pointer}
   margin-top:12px
 }
 
-.drop-line-trigger{margin-top:28px}
+.drop-line-trigger{
+  margin-top:28px
+}
+
 
 /* =========================
    CONTACT DRAWER
@@ -492,7 +582,9 @@ button{cursor:pointer}
   overflow-y:auto
 }
 
-.contact-drawer.open{transform:translateX(0)}
+.contact-drawer.open{
+  transform:translateX(0)
+}
 
 .contact-drawer h3{
   margin:0 0 28px;
@@ -515,7 +607,10 @@ button{cursor:pointer}
   line-height:1
 }
 
-.drawer-close:hover{color:var(--primary)}
+.drawer-close:hover{
+  color:var(--primary)
+}
+
 
 /* =========================
    FOOTER
@@ -546,7 +641,9 @@ button{cursor:pointer}
   font-size:14px
 }
 
-.powered a{color:var(--primary)}
+.powered a{
+  color:var(--primary)
+}
 
 .legal-links{
   display:flex;
@@ -559,6 +656,7 @@ button{cursor:pointer}
   color:var(--primary);
   text-decoration:underline
 }
+
 
 /* =========================
    MAP
@@ -588,6 +686,7 @@ button{cursor:pointer}
   text-decoration:underline
 }
 
+
 /* =========================
    TABLET
 ========================= */
@@ -608,13 +707,16 @@ button{cursor:pointer}
     gap:36px
   }
 
-  .contact-info h2{text-align:center}
+  .contact-info h2{
+    text-align:center
+  }
 
   .map-wrap{
     margin-left:auto;
     margin-right:auto
   }
 }
+
 
 /* =========================
    MOBILE
@@ -627,7 +729,9 @@ button{cursor:pointer}
     width:min(100% - 32px,600px)
   }
 
-  .section{padding:48px 0}
+  .section{
+    padding:48px 0
+  }
 
   .main-nav{
     min-height:68px;
@@ -642,7 +746,8 @@ button{cursor:pointer}
 
   .brand{
     font-size:22px;
-    letter-spacing:2px
+    letter-spacing:2px;
+    text-align:center
   }
 
   .mobile-menu-button{
@@ -659,13 +764,17 @@ button{cursor:pointer}
     letter-spacing:2px
   }
 
-  .hero-copy p{font-size:17px}
+  .hero-copy p{
+    font-size:17px
+  }
 
   .three-cols{
     grid-template-columns:1fr
   }
 
-  .about-copy{padding:0}
+  .about-copy{
+    padding:0
+  }
 
   .service-card img{
     padding:20px 20px 0
