@@ -7,12 +7,12 @@
   <meta name="description" content="Relax and rejuvenate with our skilled massage services.">
   <meta name="theme-color" content="#874949">
   <title>Nova Massage</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header" id="site-header">
     <div class="header-media">
-      <!-- Place your downloaded video at assets/nova-massage.mp4 -->
+      <!-- Video lives at videos/video.mp4 -->
       <video
         class="header-video"
         id="heroVideo"
@@ -24,7 +24,7 @@
         preload="metadata"
         aria-hidden="true"
       >
-        <source src="assets/nova-massage.mp4" type="video/mp4">
+        <source src="videos/video.mp4" type="video/mp4">
       </video>
       <div class="header-overlay"></div>
 
@@ -229,7 +229,13 @@
 
         <div class="contact-form-wrap">
           <h3>Drop us a line!</h3>
-          <form id="contactForm" class="contact-form">
+          <form id="contactForm" class="contact-form" action="https://formsubmit.co/thenovamassage@gmail.com" method="POST">
+            <!-- FormSubmit config: sends this form straight to thenovamassage@gmail.com, no backend needed -->
+            <input type="hidden" name="_subject" value="New message from the Nova Massage website">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
             <label for="name">Name</label>
             <input id="name" name="name" type="text" autocomplete="name">
 
@@ -264,6 +270,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
