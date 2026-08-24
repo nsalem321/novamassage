@@ -36,11 +36,6 @@
         </div>
 
         <a class="brand" href="#top">Nova Massage</a>
-
-        <div class="nav-right">
-          <a class="phone-link" href="tel:+17084009333">+17084009333</a>
-          <button class="more-button" id="moreButton" type="button" aria-expanded="false">More <span aria-hidden="true">⌄</span></button>
-        </div>
       </nav>
 
       <div class="mobile-nav" id="mobileNav" aria-hidden="true">
@@ -52,15 +47,8 @@
         <a class="mobile-book" href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services" target="_blank" rel="noopener noreferrer">Book Your Session Now</a>
       </div>
 
-      <div class="more-menu" id="moreMenu" aria-hidden="true">
-        <a href="#about">About</a>
-        <a href="#wellness">Wellness Combo Massages</a>
-        <a href="#popular">Popular Massages</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#contact">Contact Us</a>
-      </div>
-
       <div class="hero-copy" id="top">
+        <a class="hero-phone" href="tel:+17084009333">+17084009333</a>
         <h1>Expert Massage Therapy for Your Wellness</h1>
         <p>Relax and rejuvenate with our skilled massage services.</p>
         <a class="primary-button" href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services" target="_blank" rel="noopener noreferrer">Book Your Session Now</a>
@@ -236,42 +224,46 @@
             ></iframe>
           </div>
           <a class="directions-link" href="https://www.google.com/maps/dir/?api=1&destination=9029+West+Lincoln+Highway,+Frankfort,+IL+60423" target="_blank" rel="noopener noreferrer">Get directions</a>
-        </div>
 
-        <div class="contact-form-wrap">
-          <h3>Drop us a line!</h3>
-          <form id="contactForm" class="contact-form" action="https://formsubmit.co/thenovamassage@gmail.com" method="POST">
-            <!-- FormSubmit config: sends this form straight to thenovamassage@gmail.com, no backend needed -->
-            <input type="hidden" name="_subject" value="New message from the Nova Massage website">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" autocomplete="name">
-
-            <label for="email">Email<span aria-hidden="true">*</span></label>
-            <input id="email" name="email" type="email" autocomplete="email" required>
-
-            <label for="phone">Phone</label>
-            <input id="phone" name="phone" type="tel" autocomplete="tel">
-
-            <label for="attachment">Attach Files</label>
-            <input id="attachment" name="attachment" type="file">
-            <div class="attachment-note">Attachments (0)</div>
-
-            <p class="recaptcha-text">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.</p>
-
-            <div class="form-actions">
-              <button type="submit" class="secondary-button">Send</button>
-              <button type="reset" class="cancel-button">Cancel</button>
-            </div>
-            <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
-          </form>
+          <button type="button" class="secondary-button drop-line-trigger" id="dropLineTrigger">Drop us a line!</button>
         </div>
       </div>
     </section>
   </main>
+
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="contact-drawer" id="contactDrawer" aria-hidden="true" aria-label="Contact form">
+    <button type="button" class="drawer-close" id="drawerClose" aria-label="Close contact form">&times;</button>
+    <h3>Drop us a line!</h3>
+    <form id="contactForm" class="contact-form" action="https://formsubmit.co/thenovamassage@gmail.com" method="POST">
+      <!-- FormSubmit config: sends this form straight to thenovamassage@gmail.com, no backend needed -->
+      <input type="hidden" name="_subject" value="New message from the Nova Massage website">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" autocomplete="name">
+
+      <label for="email">Email<span aria-hidden="true">*</span></label>
+      <input id="email" name="email" type="email" autocomplete="email" required>
+
+      <label for="phone">Phone</label>
+      <input id="phone" name="phone" type="tel" autocomplete="tel">
+
+      <label for="attachment">Attach Files</label>
+      <input id="attachment" name="attachment" type="file">
+      <div class="attachment-note">Attachments (0)</div>
+
+      <p class="recaptcha-text">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.</p>
+
+      <div class="form-actions">
+        <button type="submit" class="secondary-button">Send</button>
+        <button type="reset" class="cancel-button">Cancel</button>
+      </div>
+      <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </aside>
 
   <footer class="site-footer">
     <div class="footer-container">
