@@ -154,14 +154,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // ----------------------------------------
   // Contact form
-  // This is a static page with no server-side
-  // handler wired up yet, so we do client-side
-  // validation and show a friendly status
-  // message rather than silently failing.
-  // Replace the body of handleSubmit with a
-  // real fetch()/fetch to your form backend
-  // (e.g. Formspree, Netlify Forms, your own
-  // API) when one is available.
+  // Submits to FormSubmit (https://formsubmit.co), which
+  // relays the message straight to thenovamassage@gmail.com.
+  // No backend/server code required. We POST via fetch so we
+  // can show an inline status message instead of redirecting
+  // the visitor to a new page.
+  //
+  // IMPORTANT ONE-TIME STEP: the very first time this form is
+  // submitted (from the live site), FormSubmit sends an
+  // activation email to thenovamassage@gmail.com. Someone needs
+  // to click the confirmation link in that email — after that,
+  // every future submission is delivered automatically.
   // ----------------------------------------
   if (contactForm) {
     contactForm.addEventListener("submit", function (e) {
@@ -169,6 +172,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const emailField = contactForm.querySelector("#email");
       const nameField = contactForm.querySelector("#name");
+      const submitButton = contactForm.querySelector('button[type="submit"]');
 
       if (emailField && !emailField.checkValidity()) {
         setFormStatus("Please enter a valid email address.", true);
@@ -176,15 +180,45 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      // Simple honesty check: nothing is actually being sent yet.
       const name = nameField && nameField.value.trim();
-      setFormStatus(
-        (name ? name + ", thanks" : "Thanks") +
-          " for reaching out! Please text " +
-          "+17084009333 to confirm your message — this form isn't " +
-          "connected to email yet.",
-        false
+      const formData = new FormData(contactForm);
+      const ajaxAction = contactForm.action.replace(
+        "https://formsubmit.co/",
+        "https://formsubmit.co/ajax/"
       );
+
+      if (submitButton) submitButton.disabled = true;
+      setFormStatus("Sending your message…", false);
+
+      fetch(ajaxAction, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: formData,
+      })
+        .then(function (response) {
+          if (!response.ok) throw new Error("Request failed");
+          return response.json();
+        })
+        .then(function () {
+          setFormStatus(
+            (name ? name + ", thanks" : "Thanks") +
+              " for reaching out! Your message is on its way — " +
+              "we'll get back to you soon. You're welcome to text " +
+              "+17084009333 too.",
+            false
+          );
+          contactForm.reset();
+        })
+        .catch(function () {
+          setFormStatus(
+            "Something went wrong sending that. Please text " +
+              "+17084009333 directly, or try again in a moment.",
+            true
+          );
+        })
+        .finally(function () {
+          if (submitButton) submitButton.disabled = false;
+        });
     });
 
     contactForm.addEventListener("reset", function () {
