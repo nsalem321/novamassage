@@ -22,8 +22,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const mobileMenuButton = document.getElementById("mobileMenuButton");
   const mobileNav = document.getElementById("mobileNav");
 
-  const moreButton = document.getElementById("moreButton");
-  const moreMenu = document.getElementById("moreMenu");
+  const dropLineTrigger = document.getElementById("dropLineTrigger");
+  const contactDrawer = document.getElementById("contactDrawer");
+  const drawerBackdrop = document.getElementById("drawerBackdrop");
+  const drawerClose = document.getElementById("drawerClose");
 
   const contactForm = document.getElementById("contactForm");
   const formStatus = document.getElementById("formStatus");
@@ -80,64 +82,40 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // ----------------------------------------
-  // "More" dropdown menu (desktop)
+  // "Drop us a line" slide-in contact drawer
   // ----------------------------------------
-  function openMoreMenu() {
-    moreMenu.classList.add("open");
-    moreMenu.setAttribute("aria-hidden", "false");
-    moreButton.setAttribute("aria-expanded", "true");
+  function openDrawer() {
+    contactDrawer.classList.add("open");
+    contactDrawer.setAttribute("aria-hidden", "false");
+    drawerBackdrop.classList.add("open");
+    body.classList.add("menu-open");
   }
 
-  function closeMoreMenu() {
-    moreMenu.classList.remove("open");
-    moreMenu.setAttribute("aria-hidden", "true");
-    moreButton.setAttribute("aria-expanded", "false");
+  function closeDrawer() {
+    contactDrawer.classList.remove("open");
+    contactDrawer.setAttribute("aria-hidden", "true");
+    drawerBackdrop.classList.remove("open");
+    body.classList.remove("menu-open");
   }
 
-  function toggleMoreMenu() {
-    const isOpen = moreMenu.classList.contains("open");
-    if (isOpen) {
-      closeMoreMenu();
-    } else {
-      openMoreMenu();
+  if (dropLineTrigger && contactDrawer && drawerBackdrop) {
+    dropLineTrigger.addEventListener("click", openDrawer);
+
+    if (drawerClose) {
+      drawerClose.addEventListener("click", closeDrawer);
     }
-  }
 
-  if (moreButton && moreMenu) {
-    moreButton.addEventListener("click", function (e) {
-      e.stopPropagation();
-      toggleMoreMenu();
-    });
-
-    moreMenu.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", closeMoreMenu);
-    });
-
-    document.addEventListener("click", function (e) {
-      if (
-        moreMenu.classList.contains("open") &&
-        !moreMenu.contains(e.target) &&
-        !moreButton.contains(e.target)
-      ) {
-        closeMoreMenu();
-      }
-    });
+    drawerBackdrop.addEventListener("click", closeDrawer);
   }
 
   // ----------------------------------------
-  // Shared: close both menus on Escape,
-  // and on resize back to desktop width
+  // Shared: close the mobile nav and the
+  // contact drawer on Escape
   // ----------------------------------------
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") {
       if (mobileNav) closeMobileNav();
-      if (moreMenu) closeMoreMenu();
-    }
-  });
-
-  window.addEventListener("resize", function () {
-    if (window.innerWidth > 700 && mobileNav && mobileNav.classList.contains("open")) {
-      closeMobileNav();
+      if (contactDrawer) closeDrawer();
     }
   });
 
@@ -208,6 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
             false
           );
           contactForm.reset();
+          setTimeout(closeDrawer, 2200);
         })
         .catch(function () {
           setFormStatus(
