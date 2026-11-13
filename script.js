@@ -537,4 +537,97 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+
+  // SERVICE SEARCH AND FILTERS
+  const serviceCards = Array.from(document.querySelectorAll(".popular-grid .service-card"));
+  const searchInput = document.getElementById("serviceSearch");
+  const filterButtons = Array.from(document.querySelectorAll("[data-filter]"));
+  const resultsLabel = document.getElementById("serviceResults");
+  let activeFilter = "all";
+  function classifyService(card) {
+    const name = (card.querySelector("h4")?.textContent || "").toLowerCase();
+    if (/deep tissue|tmj|upper body|neck nirvana/.test(name)) return "therapeutic";
+    if (/abdominal|lymph|brush|reflexology/.test(name)) return "specialty";
+    return "relaxation";
+  }
+  function filterServices() {
+    const term = (searchInput?.value || "").trim().toLowerCase();
+    let visible = 0;
+    serviceCards.forEach(card => {
+      const matchesText = !term || card.textContent.toLowerCase().includes(term);
+      const matchesFilter = activeFilter === "all" || classifyService(card) === activeFilter;
+      const show = matchesText && matchesFilter;
+      card.classList.toggle("is-filtered-out", !show);
+      if (show) visible++;
+    });
+    if (resultsLabel) resultsLabel.textContent = visible + (visible === 1 ? " treatment shown" : " treatments shown");
+  }
+  filterButtons.forEach(button => button.addEventListener("click", () => {
+    activeFilter = button.dataset.filter || "all";
+    filterButtons.forEach(item => {
+      const selected = item === button;
+      item.classList.toggle("is-selected", selected);
+      item.setAttribute("aria-pressed", selected ? "true" : "false");
+    });
+    filterServices();
+  }));
+  if (searchInput) searchInput.addEventListener("input", filterServices);
+
+  // SCROLL REVEALS
+  const revealTargets = document.querySelectorAll(".about-grid,.service-card,.gallery-tile,.ritual-panel,.faq-item,.reviews-empty");
+  revealTargets.forEach((element, index) => {
+    element.classList.add("js-reveal");
+    element.style.transitionDelay = (index % 3) * 70 + "ms";
+  });
+  if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealTargets.forEach(element => revealObserver.observe(element));
+  } else {
+    revealTargets.forEach(element => element.classList.add("is-visible"));
+  }
+
+  // SUBTLE POINTER-BASED 3D CARD TILT
+  const canHover = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (canHover) {
+    document.querySelectorAll(".service-card").forEach(card => {
+      card.addEventListener("pointermove", event => {
+        const rect = card.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width;
+        const y = (event.clientY - rect.top) / rect.height;
+        const rotateY = (x - 0.5) * 5;
+        const rotateX = (0.5 - y) * 4;
+        card.style.transform = "perspective(1000px) rotateX(" + rotateX + "deg) rotateY(" + rotateY + "deg) translateY(-5px)";
+      });
+      card.addEventListener("pointerleave", () => { card.style.transform = ""; });
+    });
+  }
+
+  // GUIDED FAQ CONCIERGE (NOT LIVE AI CHAT)
+  const conciergeToggle = document.getElementById("conciergeToggle");
+  const conciergePanel = document.getElementById("conciergePanel");
+  const conciergeClose = document.getElementById("conciergeClose");
+  const conciergeAnswer = document.getElementById("conciergeAnswer");
+  function setConcierge(open) {
+    if (!conciergeToggle || !conciergePanel) return;
+    conciergePanel.hidden = !open;
+    conciergeToggle.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+  if (conciergeToggle) conciergeToggle.addEventListener("click", () => setConcierge(conciergePanel.hidden));
+  if (conciergeClose) conciergeClose.addEventListener("click", () => setConcierge(false));
+  document.querySelectorAll("[data-answer]").forEach(button => {
+    button.addEventListener("click", () => {
+      if (conciergeAnswer) conciergeAnswer.textContent = button.dataset.answer || "";
+    });
+  });
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") setConcierge(false);
+  });
+
 });
