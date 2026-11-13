@@ -500,4 +500,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
+
+  // ========================================
+  // LIGHT / DARK THEME SWITCH
+  // ========================================
+
+  const themeButtons = document.querySelectorAll("[data-theme-choice]");
+
+  function applyTheme(theme) {
+    const selected = theme === "light" ? "light" : "dark";
+    body.setAttribute("data-theme", selected);
+    themeButtons.forEach(function (button) {
+      const active = button.getAttribute("data-theme-choice") === selected;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+    try {
+      localStorage.setItem("nova-massage-theme", selected);
+    } catch (error) {
+      // Theme remains usable when storage is unavailable.
+    }
+  }
+
+  let savedTheme = "dark";
+  try {
+    const storedTheme = localStorage.getItem("nova-massage-theme");
+    if (storedTheme === "light" || storedTheme === "dark") savedTheme = storedTheme;
+  } catch (error) {
+    // Keep the default dark theme.
+  }
+  applyTheme(savedTheme);
+
+  themeButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      applyTheme(button.getAttribute("data-theme-choice"));
+    });
+  });
+
 });
