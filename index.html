@@ -11,14 +11,19 @@
     content="Relax and rejuvenate with our skilled massage services."
   >
 
-  <meta name="theme-color" content="#874949">
+  <meta name="theme-color" content="#11100e">
+  <meta name="color-scheme" content="dark light">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <title>NOVA MASSAGE</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body data-theme="dark">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <!-- ========================================
        HEADER / HERO
@@ -45,13 +50,19 @@
       <div class="header-overlay"></div>
 
       <nav class="main-nav" aria-label="Primary navigation">
-        <a
-          class="brand"
-          href="#top"
-          aria-label="NOVA MASSAGE home"
-        >
-          NOVA MASSAGE
-        </a>
+        <a class="brand" href="#top" aria-label="NOVA MASSAGE home">NOVA MASSAGE</a>
+        <div class="nav-links" aria-label="Page sections">
+          <a href="#about">Our Story</a>
+          <a href="#wellness">Services</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="theme-switch" role="group" aria-label="Choose website theme">
+          <button type="button" class="theme-option" data-theme-choice="light" aria-pressed="false">Light</button>
+          <button type="button" class="theme-option is-active" data-theme-choice="dark" aria-pressed="true">Dark</button>
+        </div>
       </nav>
 
       <div class="hero-copy" id="top">
@@ -63,6 +74,7 @@
           +1 (708) 400-9333
         </a>
 
+        <div class="hero-eyebrow"><span></span> A MORE PERSONAL KIND OF WELLNESS <span></span></div>
         <div class="hero-heading-wrap">
           <h1>
             Expert Massage Therapy for Your Wellness
@@ -85,11 +97,12 @@
             Book Your Session Now
           </a>
         </div>
-
+        <a class="hero-text-link" href="#popular">Explore the treatments <span aria-hidden="true">↗</span></a>
+        <div class="hero-scroll-cue"><span></span> SCROLL TO UNWIND</div>
       </div>
-
+      <div class="hero-orbit hero-orbit-one" aria-hidden="true"></div>
+      <div class="hero-orbit hero-orbit-two" aria-hidden="true"></div>
     </div>
-
   </header>
 
 
@@ -97,7 +110,7 @@
        MAIN
   ========================================= -->
 
-  <main>
+  <main id="main-content">
 
     <!-- ========================================
          ABOUT
@@ -110,6 +123,7 @@
 
       <div class="container">
 
+        <div class="section-kicker">THE NOVA PHILOSOPHY</div>
         <h2>
           About NOVA MASSAGE
         </h2>
@@ -305,10 +319,19 @@
 
       <div class="container">
 
-        <h2>
-          Popular Massages
-        </h2>
-
+        <div class="section-kicker">FIND YOUR RESET</div>
+        <h2>Popular Massages</h2>
+        <p class="section-intro">Thoughtfully selected treatments to help you slow down, release tension and reconnect with yourself.</p>
+        <div class="service-tools">
+          <label class="service-search-wrap"><span class="sr-only">Search treatments</span><span class="search-mark" aria-hidden="true">⌕</span><input id="serviceSearch" type="search" placeholder="Search treatments..." autocomplete="off"></label>
+          <div class="service-filters" role="group" aria-label="Filter treatments">
+            <button class="filter-chip is-selected" type="button" data-filter="all" aria-pressed="true">All treatments</button>
+            <button class="filter-chip" type="button" data-filter="relaxation" aria-pressed="false">Relaxation</button>
+            <button class="filter-chip" type="button" data-filter="therapeutic" aria-pressed="false">Therapeutic</button>
+            <button class="filter-chip" type="button" data-filter="specialty" aria-pressed="false">Specialty</button>
+          </div>
+        </div>
+        <p class="service-results" id="serviceResults" aria-live="polite">Explore all treatments</p>
         <div class="cards-grid three-cols popular-grid">
 
           <!-- 2 Hour Bliss -->
@@ -834,6 +857,39 @@
     </section>
 
 
+
+    <section class="section gallery-section" id="gallery">
+      <div class="container">
+        <div class="section-kicker">A MOMENT TO YOURSELF</div>
+        <div class="gallery-heading-row">
+          <div><h2>The Art of Unwinding</h2><p class="section-intro">A calm space, considered details and treatments shaped around how you want to feel.</p></div>
+          <a class="text-link" href="#contact">Plan your visit <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-tile gallery-tile-tall"><img src="https://img1.wsimg.com/isteam/getty/1648685474/:/cr=t:0%25,l:0%25,w:100%25,h:94.81%25/rs=w:600,h:300,cg:true" alt="A peaceful massage therapy setting" loading="lazy"><figcaption><span>01 / THE EXPERIENCE</span><strong>Time to exhale</strong></figcaption></figure>
+          <figure class="gallery-tile"><img src="https://img1.wsimg.com/isteam/getty/154926838/:/cr=t:0%25,l:16.66%25,w:66.68%25,h:100%25/rs=w:365,h:365,cg:true" alt="Warm stone massage ritual" loading="lazy"><figcaption><span>02 / RESTORE</span><strong>Warmth & stillness</strong></figcaption></figure>
+          <figure class="gallery-tile"><img src="https://img1.wsimg.com/isteam/getty/1131585268/:/cr=t:0%25,l:7.95%25,w:84.1%25,h:100%25/rs=w:600,h:600,cg:true" alt="Relaxing massage treatment" loading="lazy"><figcaption><span>03 / REBALANCE</span><strong>Find your rhythm</strong></figcaption></figure>
+        </div>
+      </div>
+    </section>
+    <section class="section ritual-section" id="rituals">
+      <div class="container ritual-panel">
+        <div class="ritual-copy"><div class="section-kicker">YOUR TIME, YOUR WAY</div><h2>Make room for feeling better.</h2><p>Not sure which treatment is right for you? Tell us what you would like to focus on before booking. We can help you explore the services currently listed in our booking menu.</p><a class="primary-button" href="https://book.squareup.com/appointments/hp03im685paf9o/location/L5GA5FY28RTBX/services" target="_blank" rel="noopener noreferrer">Explore appointments</a></div>
+        <div class="ritual-orb" aria-hidden="true"><div class="ritual-orb-inner"><span>N</span><small>NOVA<br>WELLNESS</small></div></div>
+      </div>
+    </section>
+    <section class="section faq-section" id="faq">
+      <div class="container faq-layout">
+        <div class="faq-intro"><div class="section-kicker">GOOD TO KNOW</div><h2>A few helpful details.</h2><p>Everything you need to feel ready for your visit. If you have a question that is not covered here, please text us before booking.</p><a class="text-link" href="sms:+17084009333">Text NOVA MASSAGE <span aria-hidden="true">↗</span></a></div>
+        <div class="faq-list">
+          <details class="faq-item"><summary>How do I book an appointment?<span aria-hidden="true">+</span></summary><p>Use the online Square booking link to view the available services and appointment options.</p></details>
+          <details class="faq-item"><summary>Are appointments required?<span aria-hidden="true">+</span></summary><p>Yes. NOVA MASSAGE is by appointment only. Please text before scheduling online to confirm.</p></details>
+          <details class="faq-item"><summary>What payment methods are listed?<span aria-hidden="true">+</span></summary><p>The current website lists Cash and Zelle. Please contact NOVA MASSAGE if you need to confirm payment details.</p></details>
+          <details class="faq-item"><summary>Can I ask which treatment is right for me?<span aria-hidden="true">+</span></summary><p>Of course. Text the therapist before booking and share the areas you would like to focus on.</p></details>
+        </div>
+      </div>
+    </section>
+
     <!-- ========================================
          REVIEWS
     ========================================= -->
@@ -855,7 +911,7 @@
             class="reviews-empty"
             aria-label="Reviews"
           >
-            <div class="reviews-placeholder"></div>
+            <div class="reviews-placeholder"><span class="review-mark" aria-hidden="true">“</span><p>We believe the best measure of a massage is how you feel when you leave. Verified client feedback will be featured here.</p><span class="review-note">REAL EXPERIENCES · SHARED WITH PERMISSION</span></div>
           </div>
 
         </div>
@@ -1206,6 +1262,22 @@
 
   </footer>
 
+
+  
+  <div class="concierge" id="novaConcierge">
+    <button class="concierge-toggle" id="conciergeToggle" type="button" aria-expanded="false" aria-controls="conciergePanel"><span class="concierge-toggle-icon" aria-hidden="true">✦</span><span>Nova Concierge</span></button>
+    <section class="concierge-panel" id="conciergePanel" aria-label="Quick help" hidden>
+      <div class="concierge-head"><div><span class="concierge-kicker">NOVA MASSAGE</span><strong>How can we help?</strong></div><button type="button" id="conciergeClose" aria-label="Close concierge">×</button></div>
+      <p class="concierge-intro">Choose a question for quick information, or text us for personal assistance.</p>
+      <div class="concierge-questions">
+        <button type="button" data-answer="Booking is available through our Square appointment page. Use the Book button to view current services and times.">How do I book?</button>
+        <button type="button" data-answer="NOVA MASSAGE is by appointment only. Please text +1 (708) 400-9333 before scheduling online to confirm.">Are appointments required?</button>
+        <button type="button" data-answer="The current website lists Cash and Zelle. Please text us if you need to confirm payment details.">Which payments are accepted?</button>
+      </div>
+      <div class="concierge-answer" id="conciergeAnswer" aria-live="polite">Select a question above to get started.</div>
+      <a class="concierge-text-link" href="sms:+17084009333">Text +1 (708) 400-9333 ↗</a><span class="concierge-disclaimer">Quick FAQ assistant · Not a live chat</span>
+    </section>
+  </div>
 
   <script src="script.js"></script>
 
