@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body data-theme="dark">
 
   <!-- ========================================
        HEADER / HERO
@@ -45,13 +45,17 @@
       <div class="header-overlay"></div>
 
       <nav class="main-nav" aria-label="Primary navigation">
-        <a
-          class="brand"
-          href="#top"
-          aria-label="NOVA MASSAGE home"
-        >
-          NOVA MASSAGE
-        </a>
+        <a class="brand" href="#top" aria-label="NOVA MASSAGE home">NOVA MASSAGE</a>
+        <div class="nav-links" aria-label="Page sections">
+          <a href="#about">Our Story</a>
+          <a href="#wellness">Services</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="theme-switch" role="group" aria-label="Choose website theme">
+          <button type="button" class="theme-option" data-theme-choice="light" aria-pressed="false">Light</button>
+          <button type="button" class="theme-option is-active" data-theme-choice="dark" aria-pressed="true">Dark</button>
+        </div>
       </nav>
 
       <div class="hero-copy" id="top">
